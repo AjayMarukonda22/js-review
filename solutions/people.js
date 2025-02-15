@@ -24,4 +24,30 @@ const EngineersWithGivenAge = (people) => {
 console.log(EngineersWithGivenAge(people));
 
 //Group Users based on profession
+// const groupUsersByProfession = (people) => {
 
+//     return people.reduce((acc, person) => {
+//            let profession = person.profession;
+//            if(!acc[profession]) {
+//             acc[profession] = [];
+//            }
+
+//            acc[profession].push(person.name);
+//            return acc;
+//     }, {});
+// }
+
+const groupUsersByProfession = (people) => {
+
+    let output = {};
+    for(let person of people) {
+        let profession = person.profession;
+        if(!output[profession]) {
+            output[profession] = [];
+        }
+        output[profession].push(person.name);
+    }
+    return output;
+}
+
+console.log(groupUsersByProfession(people));
