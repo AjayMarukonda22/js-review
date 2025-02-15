@@ -102,3 +102,44 @@ const averageSalaryPerProfession = (people) => {
                     
 }
 console.log(averageSalaryPerProfession(people));
+
+//youngest and oldest person per profession
+
+const youngestAndOldestPerson = (people) => {
+
+      
+    return people.reduce((acc, person) => {
+        let name = person.name;
+        let age = person.age;
+        let profession = person.profession;
+         if(!acc[profession]) {
+            acc[profession] = {
+                youngestPerson: {
+                    name: name,
+                    age: age
+                }, 
+                oldestPerson : {
+                    name : name,
+                    age : age
+                }
+            }
+         }
+         let professionObject = acc[profession];
+         let youngest = professionObject.youngestPerson;
+         let oldest = professionObject.oldestPerson;
+         
+         if(age < youngest.age) {
+            youngest.name = name;
+            youngest.age = age;
+         }
+
+         if(age > oldest.age) {
+            oldest.name = name;
+            oldest.age = age;
+         }
+       
+         return acc;
+    }, {});
+}
+
+console.log(youngestAndOldestPerson(people));
